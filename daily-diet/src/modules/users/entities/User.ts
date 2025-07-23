@@ -7,8 +7,8 @@ interface UserSchema{
 }
 
 export class User{
-    props: UserSchema;
-    _id: string;
+    private props: UserSchema;
+    private _id: string;
 
     constructor(props: UserSchema, id?: string){
         this.props = props;

@@ -15,30 +15,30 @@ export class User{
         this._id = id || randomUUID();
     }
 
-   getId(): string{
+   get id(): string{
     return this._id;
    } 
-   getEmail(): string{
+   get email(): string{
     return this.props.email;
    }
 
-   setEmail(email: string){
+   set email(email: string){
     this.props.email = email;
    }
 
-   getName() : string{
+   get name() : string{
     return this.props.name;
    }
 
-   setName(name: string) {
+   set name(name: string) {
     this.props.name = name;
    }
 
-   getPassword(): string{
+   get password(): string{
     return this.props.password;
    }
 
-   setPassword(password: string){
+   set password(password: string){
     this.props.password = password;
    }
 }

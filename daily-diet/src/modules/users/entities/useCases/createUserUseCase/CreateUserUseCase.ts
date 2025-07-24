@@ -19,8 +19,10 @@ export class CreateUserUseCase{
             name,
             password: await hash(password,10),
         })
-
-        this.userRepository.create(user);
+        
+        console.log("passou no execute")
+        await this.userRepository.create(user);
+        console.log("passou no create")
 
         return user;
     }

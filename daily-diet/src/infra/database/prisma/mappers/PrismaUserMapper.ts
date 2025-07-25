@@ -5,4 +5,12 @@ export class PrismaUserMapper{
     static toPrisma({name, email, password, id}: User): UserRaw{
         return {name, email, password, id}
     }
+
+    static toDomain({id, ...userData}:UserRaw): User{
+        return new User(
+            {
+                ...userData,
+            },id,
+        );
+    }
 }

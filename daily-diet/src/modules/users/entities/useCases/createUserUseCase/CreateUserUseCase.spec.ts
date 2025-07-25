@@ -35,7 +35,7 @@ describe('Create User', () => {
         });
     
 
-        const userHasPasswordEncrypted = await compare(userPasswordWithoutEncription, user.getPassword())
+        const userHasPasswordEncrypted = await compare(userPasswordWithoutEncription, user.password)
 
         expect(userHasPasswordEncrypted).toBeTruthy()
     })

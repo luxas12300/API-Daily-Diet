@@ -5,12 +5,18 @@ import { ValidateUserUseCase } from "src/modules/auth/strategies/useCases/valida
 import { UserModule } from "../user/UserModule";
 import { DatabasModule } from "src/infra/database/prisma/database.module";
 import { SignInDTOValidateMiddleware } from "./middleware/SignInDTOValidate.middleware";
+import { SignInsUseCase } from "src/modules/auth/strategies/useCases/signInUseCase/SignInUseCase";
+import { JwtModule } from "@nestjs/jwt";
+import { JwtStrategy } from "src/modules/auth/strategies/jwt.strategy";
 
 
 @Module({
+    imports: [DatabasModule,UserModule, JwtModule.register({
+        secret: process.env.JWT_SECRET,
+        signOptions: {expiresIn: process.env.JWT_EXPIRE}
+    })],
     controllers: [AuthController],
-    imports: [DatabasModule,UserModule],
-    providers: [LocalStrategy, ValidateUserUseCase]
+    providers: [LocalStrategy, JwtStrategy, ValidateUserUseCase, SignInsUseCase],
 })
 
 export class AuthModule{
